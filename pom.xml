@@ -67,6 +67,57 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!-- Checkstyle -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>3.1.1</version>
+				<configuration>
+					<configLocation>checkstyle.xml</configLocation>
+					<encoding>UTF-8</encoding>
+					<consoleOutput>true</consoleOutput>
+					<failsOnError>true</failsOnError>
+					<linkXRef>false</linkXRef>
+				</configuration>
+				<executions>
+					<execution>
+						<id>validate</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- Prettier -->
+			<plugin>
+				<groupId>com.hubspot.maven.plugins</groupId>
+				<artifactId>prettier-maven-plugin</artifactId>
+				<version>0.17</version>
+				<configuration>
+					<prettierJavaVersion>1.6.1</prettierJavaVersion>
+					<printWidth>100</printWidth>
+					<tabWidth>4</tabWidth>
+					<useTabs>false</useTabs>
+					<ignoreConfigFile>true</ignoreConfigFile>
+					<ignoreEditorConfig>true</ignoreEditorConfig>
+					<!-- Use <inputGlobs> to override the default input patterns -->
+					<inputGlobs>
+						<!-- These are the default patterns, you can omit <inputGlobs> entirely unless you want to override them -->
+						<inputGlob>src/main/java/**/*.java</inputGlob>
+						<inputGlob>src/test/java/**/*.java</inputGlob>
+					</inputGlobs>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 	</build>
 	<repositories>
