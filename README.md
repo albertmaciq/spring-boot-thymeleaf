@@ -1,1 +1,1 @@
-# spring-boot-first-project-thymeleaf
+# spring-boot-thymeleaf
